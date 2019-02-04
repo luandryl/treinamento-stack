@@ -1,68 +1,48 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Treinamento Stack Unect Jr.
+![Logo Unect Junior](https://i.imgur.com/ic3PKG9.png)
+#### Olá Unectianos, aos que aceitaram esse novo desafio de dar um passo a mais nesse vasto caminho do conhecimento, parabéns!! Nós garantimos que a linha de conhecimento será muito grande e cada um de vocês vai passar a se interesar mais pela stack da nossa empresa.
+---
+Os participantes terão que dar um fork nesse repositório e a partir dai começarem o desvenvolvimento, sempre lembrando de utilizarem o git para controle de versões, dando commits por funcionalidade.
+O projeto será fazer um To Do List simples, porém usaremos parte da nossa stack e isso é o que torna tudo mais interessante! O projeto será dividido em **2 partes**.
 
-## Available Scripts
+--- 
+#### Parte 1
+Na **primeira parte** iremos nos focar em fazer um To Do List utilizando o conceito de SPA, iremos focar em utilizar as seguintes tecnologias:
+- React;
+- NodeJS + Express;
+- MongoDB + MongooseJS.
 
-In the project directory, you can run:
+Todas fazem parte da stack da empresa e todas tem uma linha de conhecimento absurda.
 
-### `npm start`
+Iremos utillizar o **React** para fazer a parte do front-end, usarão o **NodeJS e o Express(que é um framework do NodeJS)** para fazer o back-end, e como banco de dados usarão o **MongoDB e o MongooseJS(ORM)**. 
+Todos podem optar por fazer back-end antes do front ou ao contrário.
+Nós também achamos interessante aplicar o conceito de **Docker** para o projeto, que necessariamente não faz parte da stack da empresa mas é algo que vai agregar para o conhecimento de todos e serve para todos terem uma base sobre esse conceito. Teremos que **utilizar o MongoDB a partir de um container do docker**.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+---
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+#### Parte 2
+Já na **segunda parte** faremos um upgrade no projeto. Para complementar parte do front-end vamos passar a utilizar o **Redux juntamente ao React**.
+Além disso também faremos uma segunda tela, que servirá para como uma tela de autenticação(Cadastro e Login), e essa autenticação deverá ser feita a partir do **Json Web Token(JWT)**.
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### Dicas de desenvolvimento
+- Utilização de Linux, por tornar as pessoas mais próximas ao ambiente de desenvolvimento Linux.
+- VSCode é mais uma questão pessoal de editor de texto, o VSCode é diferenciado pois como é o editor de texto mais utilizado no mundo, existem MUITOS plugins para ele, e muitos desses plugins se usados da maneira correta facilitam muito o desenvolvimento. Aos interessados em começarem a utilizar o VSCode irei passar algumas configurações/ plugins que eu(Bruno) utilizo e facilita muito minha vida. 
+- Insomnia, o Insomnia é uma ferramenta para testes de API REST. Muito simples de ser utilizada e muito útil.
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Links de aprendizado
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+- [Git](https://www.udacity.com/course/how-to-use-git-and-github--ud775)
+- [HTML+CSS](https://www.origamid.com/curso/web-design-completo/)
+- [JavaScript](https://rocketseat.com.br/starter/curso-gratuito-javascript) + [JavaScriptES6](https://rocketseat.com.br/starter/curso-gratuito-javascript-es6)
+- [React](https://www.youtube.com/playlist?list=PL4cUxeGkcC9ij8CfkAY2RAGb-tmkNwQHG)
+- [NodeJS](https://rocketseat.com.br/starter/curso-gratuito-nodejs) / [NodeJS](https://www.youtube.com/watch?v=w-7RQ46RgxU&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+#### Grupo no WhatsApp para auxílio
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+[WhatsApp](https://chat.whatsapp.com/KvMynXwOjSj2n7CYTysegq)
