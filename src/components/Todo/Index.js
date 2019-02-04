@@ -1,12 +1,23 @@
 import React, { Component } from 'react';
 import "./todo.css"
+import axios from 'axios'
 class Todo extends Component {
   constructor () {
     super();
     this.state = {
-      tasks: [{data: "delete me and add some tasks", status: true}],
+      tasks: [],
       task: ''
     }
+  }
+  _updateState () {
+    axios.get("https://unectodo.herokuapp.com/todo").then(res => {
+      this.setState({tasks: res.data})
+    }).catch(e => {
+      console.log(e)
+    })
+  }
+  componentWillMount () {
+    this._updateState()
   }
 
   inputHandler = e => {this.setState({task: e.target.value})}
@@ -16,29 +27,32 @@ class Todo extends Component {
       data: this.state.task,
       status: false
     }
-    this.setState({tasks: [...this.state.tasks, newTask]})
+    axios.post("https://unectodo.herokuapp.com/todo", newTask).then(res => {
+      if (res.status === 200) {
+        this._updateState()
+      }
+    })
     this.setState({task: ''})
   }
 
   completeTask = (e, task) => {
     e.preventDefault();
-    let updatedTaskList = this.state.tasks.map(t => {
-      if (t === task) {
-        t.status = true
+    task.status = true
+    axios.put("https://unectodo.herokuapp.com/todo/" + task._id, task).then(res => {
+      if (res.status === 200) {
+        this._updateState()
       }
-      return t
     })
-    this.setState({tasks: updatedTaskList})
   }
 
   removeTask = (e, task) => {
     e.preventDefault();
-    let updatedTaskList = this.state.tasks.filter(t => {
-      if (t !== task) {
-        return t
+    task.status = true
+    axios.delete("https://unectodo.herokuapp.com/todo/" + task._id).then(res => {
+      if (res.status === 200) {
+        this._updateState()
       }
     })
-    this.setState({tasks: updatedTaskList})
   }
 
   render() {
