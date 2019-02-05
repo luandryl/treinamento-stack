@@ -53,7 +53,12 @@
     font-size: 1rem;
     padding: 1rem;
 }
-
+.loader {
+    padding: 1rem;
+    text-align: center;
+    width: 100%;
+    color: #003c8f;
+}
 .todo-list li{
     color: #333;
     font-family: 'Lato', sans-serif;

@@ -6,15 +6,18 @@ class Todo extends Component {
     super();
     this.state = {
       tasks: [],
-      task: ''
+      task: '',
+      isLoading: true
     }
   }
-  _updateState () {
-    axios.get("https://unectodo.herokuapp.com/todo").then(res => {
+  async _updateState () {
+    await axios.get("https://unectodo.herokuapp.com/todo").then(res => {
       this.setState({tasks: res.data})
+      this.setState({isLoading: false})
     }).catch(e => {
       console.log(e)
     })
+
   }
   componentWillMount () {
     this._updateState()
@@ -62,6 +65,8 @@ class Todo extends Component {
       return <li key={i} className={m.status ? 'completedTask':''}> {m.data} <div>{controlBtn}</div></li>
     })
 
+    let todoBox = (this.state.isLoading !== true)?(<ul>{todoList}</ul>) : (<div className="loader"><i class="fas fa-spinner fa-5x"></i></div>)
+  
     return (
       <div className="todo-wrapper">
           <div className="todo-input">
@@ -70,12 +75,9 @@ class Todo extends Component {
             <button type="submit" onClick={this.saveTask}> Add Todo </button>
           </div>
           <div className="todo-list">
-            <ul>
-              {todoList}
-            </ul>
+            {todoBox}
           </div>
       </div>
-    
     );
   }
 }
