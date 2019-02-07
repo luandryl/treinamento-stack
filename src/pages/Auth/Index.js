@@ -22,12 +22,6 @@ class Auth extends Component {
   }
 
   render () {
-
-    const transitionOptions = {
-      transitionName: "fade",
-      transitionEnterTimeout: 500
-    }
-    
     let form = (this.state.isActive) ? <Login /> : <Singup />
     
     let nav = (this.state.isActive) ? "signup" : "login"
