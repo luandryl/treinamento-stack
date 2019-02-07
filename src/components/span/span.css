@@ -1,0 +1,11 @@
+.span-pr{
+    padding: .2rem;
+    cursor: pointer;
+    color: rgb(105, 122, 145);
+    font-family: 'Lato', sans-serif;
+    transition: all ease-in-out .3s;
+    text-align: center;
+}
+.span-pr:hover {
+    color: #5e92f3;
+}

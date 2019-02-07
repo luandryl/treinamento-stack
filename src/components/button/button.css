@@ -1,0 +1,41 @@
+.btn-pr {
+    font-family: 'Lato', sans-serif;
+    background:rgb(105, 122, 145);
+    color: #fff;
+    cursor: pointer;
+    border-radius: 10px;
+    padding: .7rem;
+    font-size: 1rem;
+    transition: all 0.4s ease;
+    align-self: flex-end;
+    margin-top: .7rem;
+    border:none;
+}
+.btn-pr:hover {
+    background: #5e92f3;
+}
+
+.btn-todo:active {
+    border:none;
+}
+
+.btn-todo {
+    font-family: 'Lato', sans-serif;
+    background:rgb(105, 122, 145);
+    color: #fff;
+    cursor: pointer;
+    border-radius: 10px;
+    padding: .7rem;
+    margin-left: -4px;
+    font-size: 1.2rem;
+    transition: all 0.4s ease;
+    align-self: flex-end;
+    border:none;
+    border-bottom: 2px solid rgb(105, 122, 145);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.btn-todo:hover {
+    background: #5e92f3;
+}

@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 
+import DefaultPage from './../DefaultPage'
+
 import Singup from './Signup'
 import Login from './Login'
+import Span from './../../components/span/Span'
 
 import "./auth.css"
 
@@ -30,23 +33,14 @@ class Auth extends Component {
     let nav = (this.state.isActive) ? "signup" : "login"
 
     return (
-      <div className="auth-container">
-        <div className="auth-box">
-          <div className="auth-content">
-            <div className="controls-wrapper">
-                <div className="ct">
-                  <span onClick={this.activate}>{nav}</span>
-                </div>
-            </div>
-            <div className="auth-form-content">
-              {form}
-            </div>
-          </div>
-          <div className="auth-image">
-            <label> UNECTodo </label>
-          </div>
+      <DefaultPage>
+        <div className="control-wrapper">
+          <Span onClick={this.activate} className="span-pr hover" text={nav} />
         </div>
-      </div>
+        <div className="auth-form-content">
+          {form}
+        </div>
+      </DefaultPage>
     );
   }
 }

@@ -1,4 +1,10 @@
 import React, { Component } from 'react';
+import DefaultPage from './../DefaultPage'
+
+import Span from './../../components/span/Span'
+import Input from '../../components/inputs/Input'
+import Button from '../../components/button/Button'
+
 import "./todo.css"
 import axios from 'axios'
 
@@ -26,7 +32,8 @@ class Todo extends Component {
 
   inputHandler = e => {this.setState({task: e.target.value})}
 
-  saveTask = () => {
+  saveTask = (e) => {
+    e.preventDefault()
     let newTask = {
       data: this.state.task,
       status: false
@@ -35,7 +42,7 @@ class Todo extends Component {
       if (res.status === 200) {
         this._updateState()
       }
-    })
+    }).catch(e => {console.log(e)})
     this.setState({task: ''})
   }
 
@@ -59,26 +66,34 @@ class Todo extends Component {
     })
   }
 
+  logout = () => {
+    this.props.history.push('/')
+  }
+
   render() {
 
     let todoList = this.state.tasks.map((m, i) => {
       let controlBtn = (m.status === true) ? (<i className="fas fa-trash" onClick={(e)=>{this.removeTask(e, m)}} ></i>): (<i className="fas fa-check" onClick={(e) => {this.completeTask(e, m)}}></i>)
-      return <li key={i} className={m.status ? 'completedTask':''}> {m.data} <div>{controlBtn}</div></li>
+      return <li key={i} className={m.status ? 'completedTask':''}> {m.data} {controlBtn}</li>
     })
 
     let todoBox = (this.state.isLoading !== true)?(<ul>{todoList}</ul>) : (<div className="loader"><i class="fas fa-spinner fa-5x"></i></div>)
   
     return (
-      <div className="todo-wrapper">
-          <div className="todo-input">
-            <h1>UNECTodo</h1>
-            <input type="text" value={this.state.task} onChange={this.inputHandler} placeholder="Add some task"/>
-            <button type="submit" onClick={this.saveTask}> Add Todo </button>
-          </div>
+      <DefaultPage>
+        <div className="control-wrapper">
+          <Span onClick={this.logout} className="span-pr" text="logout" />
+        </div>
+        <div className="todo-wrapper">
+        <div className="todo-ctrl">
+          <Input className="input-todo" type="text" value={this.state.task} onChange={this.inputHandler} placeholder="Homework..."/>
+          <Button type="submit" onClick={(e) => {this.saveTask(e)}} text="add" className="btn-todo"  />
+        </div>
           <div className="todo-list">
             {todoBox}
           </div>
-      </div>
+        </div>
+      </DefaultPage>
     );
   }
 }

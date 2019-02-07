@@ -1,0 +1,9 @@
+.pr-label  {
+    font-size: 1rem;
+    align-self: flex-start;
+    padding: .2rem;
+    margin: .2rem;
+    color: rgb(105, 122, 145);
+    font-family: 'Lato', sans-serif;
+    transition: all ease-in-out .3s;
+}
