@@ -2,29 +2,40 @@ import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 
 import Label from '../../components/labels/Label'
-import InputDef from '../../components/inputs/Input'
+import Input from '../../components/inputs/Input'
 import Button from '../../components/button/Button'
 import "./auth.css"
 
 
 class Login extends Component {
 
+  constructor () {
+    super()
+    this.state = {
+      email: '',
+      password: ''
+    }
+  }
+
+
+  handleEmail = e => {this.setState({email: e.target.value})}
+  handlePassword = e => {this.setState({password: e.target.value})}
+
   handleClick = (e) => {
     e.preventDefault()
-    this.props.history.push('/todo/')
+    console.log(this.state)
   }
 
   render() {
     return (
-    <div className="login-container">
-      
+    <div className="login-container"> 
       <div className="form-wrapper">
         <div className="form-box">
           <Label text="email:" />
-          <InputDef className="input-def" type="text"  placeholder="you@provider.com" />
+          <Input value={this.email} onChange={this.handleEmail} className="input-def" type="text"  placeholder="you@provider.com" />
           <Label text="password:" />
-          <InputDef className="input-def" type="password"  placeholder="*******" />
-          <Button type="submit" onClick={(e) => {this.handleClick(e)}} text="enter" className="btn-pr"  />
+          <Input value={this.password} onChange={this.handlePassword} className="input-def" type="password"  placeholder="*******" />
+          <Button type="submit"  onClick={(e) => {this.handleClick(e)}} text="enter" className="btn-pr"  />
         </div>
       </div>
 

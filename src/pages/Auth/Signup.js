@@ -13,7 +13,11 @@ class Signup extends Component {
   constructor () {
     super()
     this.state = {
-      redirect: false
+      redirect: false,
+      name: '',
+      email: '',
+      password: '',
+      check: ''
     }
   }
 
@@ -29,14 +33,14 @@ class Signup extends Component {
       <div className="form-wrapper">
         <div className="form-box">
           <Label text="name:" />
-          <InputDef className="input-def" type="text" placeholder="Mark Z" />
+          <InputDef value={this.state.name} className="input-def" type="text" placeholder="Mark Z" />
           <Label text="email:" />
-          <InputDef className="input-def" type="text" placeholder="you@provider.com" />
+          <InputDef value={this.state.email} className="input-def" type="text" placeholder="you@provider.com" />
           <Label text="password:" />
-          <InputDef className="input-def" type="password" placeholder="*******" />
+          <InputDef value={this.state.password} className="input-def" type="password" placeholder="*******" />
 
           <div className="check-input">
-            <InputDef className="input-ck" type="text"  placeholder="3+2=?" />
+            <InputDef value={this.state.check} className="input-ck" type="text"  placeholder="3+2=?" />
           </div>
         
           <Button type="submit" onClick={(e) => {this.handleClick(e)}} text="create acount" className="btn-pr" />
