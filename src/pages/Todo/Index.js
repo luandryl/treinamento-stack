@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { fetchTodos, newTodo, completeTask, removeTask } from '../../store/actions/todoAction'
+
 import DefaultPage from './../DefaultPage'
 
 import Span from './../../components/span/Span'
@@ -6,64 +10,40 @@ import Input from '../../components/inputs/Input'
 import Button from '../../components/button/Button'
 
 import "./todo.css"
-import axios from 'axios'
 
 class Todo extends Component {
+
   constructor () {
-    super();
+    super()
     this.state = {
-      tasks: [],
-      task: '',
-      isLoading: true
+      isLoading: false
     }
   }
-  async _updateState () {
-    await axios.get("https://unectodo.herokuapp.com/todo").then(res => {
-      this.setState({tasks: res.data})
-      this.setState({isLoading: false})
-    }).catch(e => {
-      console.log(e)
-    })
 
-  }
   componentWillMount () {
-    this._updateState()
+    this.props.fetchTodos();
   }
-
+  
   inputHandler = e => {this.setState({task: e.target.value})}
 
   saveTask = (e) => {
     e.preventDefault()
-    let newTask = {
+    this.props.newTodo({
       data: this.state.task,
       status: false
-    }
-    axios.post("https://unectodo.herokuapp.com/todo", newTask).then(res => {
-      if (res.status === 200) {
-        this._updateState()
-      }
-    }).catch(e => {console.log(e)})
+    })
     this.setState({task: ''})
   }
 
   completeTask = (e, task) => {
     e.preventDefault();
     task.status = true
-    axios.put("https://unectodo.herokuapp.com/todo/" + task._id, task).then(res => {
-      if (res.status === 200) {
-        this._updateState()
-      }
-    })
+    this.props.completeTask(task)
   }
 
   removeTask = (e, task) => {
     e.preventDefault();
-    task.status = true
-    axios.delete("https://unectodo.herokuapp.com/todo/" + task._id).then(res => {
-      if (res.status === 200) {
-        this._updateState()
-      }
-    })
+    this.props.removeTask(task)
   }
 
   logout = () => {
@@ -72,7 +52,7 @@ class Todo extends Component {
 
   render() {
 
-    let todoList = this.state.tasks.map((m, i) => {
+    let todoList = this.props.todos.map((m, i) => {
       let controlBtn = (m.status === true) ? (<i className="fas fa-trash" onClick={(e)=>{this.removeTask(e, m)}} ></i>): (<i className="fas fa-check" onClick={(e) => {this.completeTask(e, m)}}></i>)
       return <li key={i} className={m.status ? 'completedTask':''}> {m.data} {controlBtn}</li>
     })
@@ -98,4 +78,16 @@ class Todo extends Component {
   }
 }
 
-export default Todo;  
+Todo.prototypes = {
+  newTodo: PropTypes.func.isRequired,
+  fetchTodos: PropTypes.func.isRequired,
+  completedTask: PropTypes.func.isRequired,
+  removeTask: PropTypes.func.isRequired,
+  todos: PropTypes.array.isRequired
+}
+
+const mapStateToProps = state => ({
+  todos: state.todos.todo_list
+})
+
+export default connect(mapStateToProps, {fetchTodos, newTodo, completeTask, removeTask})(Todo);  
