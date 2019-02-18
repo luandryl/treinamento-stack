@@ -22,7 +22,7 @@ class Auth extends Component {
   }
 
   render () {
-    let form = (this.state.isActive) ? <Login /> : <Singup />
+    let form = (this.state.isActive) ? <Login history={this.props.history} /> : <Singup history={this.props.history}/>
     
     let nav = (this.state.isActive) ? "signup" : "login"
 
