@@ -2,7 +2,7 @@
 import axios from 'axios'
 
 const config = {
-  base_url: 'https://unectodo.herokuapp.com/',
+  base_url: 'https://api-unectodo.herokuapp.com/',
 }
 
 const _getHeaders = () => {
