@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+
+import { login } from '../../store/actions/authAction'
 
 import Label from '../../components/labels/Label'
 import Input from '../../components/inputs/Input'
@@ -12,18 +15,18 @@ class Login extends Component {
   constructor () {
     super()
     this.state = {
-      email: '',
+      login: '',
       password: ''
     }
   }
 
 
-  handleEmail = e => {this.setState({email: e.target.value})}
+  handleLogin = e => {this.setState({login: e.target.value})}
   handlePassword = e => {this.setState({password: e.target.value})}
 
   handleClick = (e) => {
     e.preventDefault()
-    console.log(this.state)
+    this.props.login(this.state, this.props.history)
   }
 
   render() {
@@ -31,8 +34,8 @@ class Login extends Component {
     <div className="login-container"> 
       <div className="form-wrapper">
         <div className="form-box">
-          <Label text="email:" />
-          <Input value={this.email} onChange={this.handleEmail} className="input-def" type="text"  placeholder="you@provider.com" />
+          <Label text="login:" />
+          <Input value={this.login} onChange={this.handleLogin} className="input-def" type="text"  placeholder="login" />
           <Label text="password:" />
           <Input value={this.password} onChange={this.handlePassword} className="input-def" type="password"  placeholder="*******" />
           <Button type="submit"  onClick={(e) => {this.handleClick(e)}} text="enter" className="btn-pr"  />
@@ -43,4 +46,8 @@ class Login extends Component {
   }
 }
 
-export default withRouter(Login)
+Login.prototypes = {
+  login: PropTypes.func.isRequired
+}
+
+export default connect(null, { login })(Login)
