@@ -8,12 +8,22 @@ import Todo from './pages/Todo/Index'
 import * as serviceWorker from './serviceWorker';
 import store from './store/store'
 
+import { authorized } from './store/actions/types'
+import requireAuth from './components/auth/require_auth';
+import noAuth from './components/auth/no_auth';
+
+const user = localStorage.getItem('user');
+
+if(user) {
+    store.dispatch({ type: authorized });
+}
+
 ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
             <Switch>
-                <Route path="/" exact={true} component={Auth} />
-                <Route path="/todo" exact={true} component={Todo} />
+                <Route path="/" exact={true} component={noAuth(Auth)} />
+                <Route path="/todo" exact={true} component={requireAuth(Todo)} />
             </Switch>
         </BrowserRouter>
     </Provider>
