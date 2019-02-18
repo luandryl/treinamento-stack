@@ -1,4 +1,4 @@
-import { authorized, unauthorized, auth_error } from '../actions/types'
+import { authorized, unauthorized, logout } from '../actions/types'
 
 const initialState = {
   error: {},
@@ -17,12 +17,6 @@ export default function (state = initialState, action) {
       return {
         ...state,
         authorized: false
-      }
-    
-    case auth_error:
-      return {
-        ...state,
-        error: action.payload
       }
 
     default:

@@ -5,5 +5,5 @@ export const REMOVE_TASK = 'REMOVE_TASK'
 
 export const authorized = 'authorized'
 export const unauthorized = 'unauthorized'
-export const auth_error = 'auth_error'
+export const logout = 'logout'
 
