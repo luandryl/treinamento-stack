@@ -1,4 +1,7 @@
-export const FETCH_TODOS = 'FETCH_TODOS'
+export const FETCH_TODOS_START = 'FETCH_TODOS_START'
+export const FETCH_TODOS_SUCESS = 'FETCH_TODOS_SUCESS'
+export const FETCH_TODOS_FAIL = 'FETCH_TODOS_FAIL'
+
 export const NEW_TODO = 'NEW_TODO'
 export const COMPLETE_TASK = 'COMPLETE_TASK'
 export const REMOVE_TASK = 'REMOVE_TASK'

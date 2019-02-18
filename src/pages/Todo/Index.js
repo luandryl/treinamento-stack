@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { fetchTodos, newTodo, completeTask, removeTask } from '../../store/actions/todoAction'
+import { newTodo } from '../../store/actions/todoAction'
 import { logout } from '../../store/actions/authAction'
 
 import DefaultPage from './../DefaultPage'
@@ -34,17 +34,6 @@ class Todo extends Component {
     this.setState({task: ''})
   }
 
-  completeTask = (e, task) => {
-    e.preventDefault();
-    task.status = true
-    this.props.completeTask(task)
-  }
-
-  removeTask = (e, task) => {
-    e.preventDefault();
-    this.props.removeTask(task)
-  }
-
   logout = () => {
     this.props.logout(this.props.history)
   }
@@ -72,9 +61,7 @@ class Todo extends Component {
 Todo.prototypes = {
   newTodo: PropTypes.func.isRequired,
   fetchTodos: PropTypes.func.isRequired,
-  completedTask: PropTypes.func.isRequired,
-  removeTask: PropTypes.func.isRequired,
   logOut: PropTypes.func.isRequired
 }
 
-export default connect(null , {fetchTodos, newTodo, completeTask, removeTask, logout})(Todo);  
+export default connect(null , {newTodo, logout})(Todo);  

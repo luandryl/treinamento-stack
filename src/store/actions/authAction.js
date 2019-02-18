@@ -1,4 +1,10 @@
-import { authorized, unauthorized, FETCH_TODOS } from './types'
+import { 
+  authorized,
+  unauthorized,
+  FETCH_TODOS_START, 
+  FETCH_TODOS_SUCESS, 
+  FETCH_TODOS_FAIL, 
+} from './types'
 import { HttpProvider } from './../../services/HttpProvider'
 
 export const signup = (data, history) => dispatch => {
@@ -30,23 +36,24 @@ export const login = (data) => dispatch => {
       dispatch({ type: unauthorized })
     }
   }).then(()=> {
-      let user = JSON.parse(localStorage.getItem('user'))
-      if (user) {
-        let user_data = localStorage.getItem('user')
-
-      if (user_data) {
-        let userid = JSON.parse(localStorage.getItem('user')).user._id
-        HttpProvider.get('todo/task_list/'+userid).then(res => {
-          if (res.status === 200) {
-            dispatch({
-              type: FETCH_TODOS,
-              payload: res.data
-            })
-          }
-        }).catch(e => {
-          console.log(e)
+    dispatch({type:  FETCH_TODOS_START})
+    let user_data = localStorage.getItem('user')
+  
+    if (user_data) {
+      let userid = JSON.parse(localStorage.getItem('user')).user._id
+      HttpProvider.get('todo/task_list/'+userid).then(res => {
+        if (res.status === 200) {
+          dispatch({
+            type: FETCH_TODOS_SUCESS,
+            payload: res.data
+          })
+        }
+      }).catch(e => {
+        console.log(e)
+        dispatch({
+          type: FETCH_TODOS_FAIL
         })
-      }
+      })
     }
   })
   .catch(e => {

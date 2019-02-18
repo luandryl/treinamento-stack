@@ -1,16 +1,28 @@
-import { FETCH_TODOS, NEW_TODO, COMPLETE_TASK, REMOVE_TASK } from './../actions/types';
+import { FETCH_TODOS_START, FETCH_TODOS_SUCESS, FETCH_TODOS_FAIL, NEW_TODO, COMPLETE_TASK, REMOVE_TASK } from './../actions/types';
 
 const initialState = {
   todo_list: [],
-  todo: {}
+  todo: {},
+  isLoading: true
 }
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case FETCH_TODOS:
+    case FETCH_TODOS_START:
+    return {
+      ...state,
+      isLoading: true
+    }
+    case FETCH_TODOS_SUCESS:
       return {
         ...state,
-        todo_list: action.payload
+        todo_list: action.payload,
+        isLoading: false
+      }
+    case FETCH_TODOS_FAIL:
+      return {
+        ...state,
+        isLoading: false
       }
     case NEW_TODO:
       return {

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 
 import { connect } from 'react-redux'
-import { fetchTodos, newTodo, completeTask, removeTask } from '../../store/actions/todoAction'
+import { fetchTodos, completeTask, removeTask } from '../../store/actions/todoAction'
 
 class TodoList extends Component {
 
@@ -11,6 +11,17 @@ class TodoList extends Component {
     this.state = {
       isLoading: false
     }
+  }
+
+  completeTask = (e, task) => {
+    e.preventDefault();
+    task.status = true
+    this.props.completeTask(task)
+  }
+
+  removeTask = (e, task) => {
+    e.preventDefault();
+    this.props.removeTask(task)
   }
   
   componentDidMount () {
@@ -23,7 +34,7 @@ class TodoList extends Component {
       return <li key={i} className={m.status ? 'completedTask':''}> {m.data} {controlBtn}</li>
     })
   
-    let todoBox = (this.state.isLoading !== true)?(<ul>{todoList}</ul>) : (<div className="loader"><i class="fas fa-spinner fa-5x"></i></div>)
+    let todoBox = (this.props.isLoading !== true)?(<ul>{todoList}</ul>) : (<div className="loader"><i className="fas fa-spinner fa-5x"></i></div>)
     
     return todoBox
   }
@@ -35,7 +46,10 @@ TodoList.prototypes = {
 
 
 const mapStateToProps = state => ({
-  list: state.todos.todo_list
+  list: state.todos.todo_list,
+  isLoading: state.todos.isLoading,
+  completedTask: PropTypes.func.isRequired,
+  removeTask: PropTypes.func.isRequired,
 })
 
-export default connect(mapStateToProps, {fetchTodos})(TodoList);
+export default connect(mapStateToProps, {fetchTodos, completeTask, removeTask})(TodoList);
