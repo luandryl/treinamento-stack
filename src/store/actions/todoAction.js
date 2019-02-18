@@ -1,4 +1,3 @@
-import axios from 'axios'
 import { FETCH_TODOS, NEW_TODO, COMPLETE_TASK, REMOVE_TASK } from './types';
 import {HttpProvider} from './../../services/HttpProvider'
 

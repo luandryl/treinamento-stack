@@ -2,11 +2,7 @@ import React, { Component } from 'react'
 import "./default.css"
 
 class DefaultPage extends Component {
-
-  constructor(props) {
-    super(props);
-  }
-
+  
   render () {
     return (
       <div className="page-container">

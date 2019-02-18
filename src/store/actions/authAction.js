@@ -1,5 +1,4 @@
 import { authorized, unauthorized } from './types'
-import axios from 'axios'
 import { HttpProvider } from './../../services/HttpProvider'
 
 export const signup = (data, history) => dispatch => {

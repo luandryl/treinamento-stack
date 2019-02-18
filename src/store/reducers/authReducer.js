@@ -1,4 +1,4 @@
-import { authorized, unauthorized, logout } from '../actions/types'
+import { authorized, unauthorized } from '../actions/types'
 
 const initialState = {
   error: {},
