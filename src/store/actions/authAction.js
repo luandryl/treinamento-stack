@@ -1,40 +1,44 @@
 import { authorized, unauthorized } from './types'
 import axios from 'axios'
+import { HttpProvider } from './../../services/HttpProvider'
 
 export const signup = (data, history) => dispatch => {
 
-  axios.post('https://unectodo.herokuapp.com/auth/signup/', data).then(res => {
+  HttpProvider.post('auth/signup/', data).then(res => {
     if (res.status === 201) {
       dispatch({ type: authorized })
       if (!localStorage.getItem('user')) {
-        localStorage.setItem('user', JSON.stringify(data))
+        localStorage.setItem('user', JSON.stringify(res.data))
       }
       history.push('/todo/')
     } else {
       dispatch({ type: unauthorized })
     }
-  }).catch (err => {
-    console.log(err)
+  }).catch(e => {
+    console.log(e)
   })
+
 }
 
 export const login = (data, history) => dispatch => {
-  axios.post('https://unectodo.herokuapp.com/auth/login/', data).then(res => {
+  HttpProvider.post('auth/login/', data).then(res => {
     if (res.status === 200) {
       dispatch({ type: authorized })
       if (!localStorage.getItem('user')) {
-        localStorage.setItem('user', JSON.stringify(data))
+        localStorage.setItem('user', JSON.stringify(res.data))
       }
       history.push('/todo/')
     } else {
       dispatch({ type: unauthorized })
     }
-  }).catch (err => {
-    console.log(err)
+  }).catch(e => {
+    console.log(e)
   })
+
 }
 export const logout = (history) => dispatch => {
   localStorage.clear()
   dispatch({ type: unauthorized })
+  dispatch({ type: logout })
   history.push('/')
 }
