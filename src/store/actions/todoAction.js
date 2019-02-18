@@ -9,7 +9,6 @@ export const fetchTodos = () => dispatch => {
   if (user_data) {
     let userid = JSON.parse(localStorage.getItem('user')).user._id
     HttpProvider.get('todo/task_list/'+userid).then(res => {
-      console.log(res.data)
       if (res.status === 200) {
         dispatch({
           type: FETCH_TODOS,
