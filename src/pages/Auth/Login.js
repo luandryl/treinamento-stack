@@ -26,7 +26,7 @@ class Login extends Component {
 
   handleClick = (e) => {
     e.preventDefault()
-    this.props.login(this.state, this.props.history)
+    this.props.login(this.state)
   }
 
   render() {

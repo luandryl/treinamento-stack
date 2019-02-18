@@ -10,6 +10,8 @@ import Span from './../../components/span/Span'
 import Input from '../../components/inputs/Input'
 import Button from '../../components/button/Button'
 
+import TodoList from './TodoList'
+
 import "./todo.css"
 
 class Todo extends Component {
@@ -17,17 +19,10 @@ class Todo extends Component {
   constructor () {
     super()
     this.state = {
-      isLoading: false
+      task: ''
     }
   }
 
-  componentWillMount () {
-    this.props.fetchTodos();
-  }
-  componentWillUpdate () {
-    this.props.fetchTodos();
-  }
-  
   inputHandler = e => {this.setState({task: e.target.value})}
 
   saveTask = (e) => {
@@ -55,14 +50,6 @@ class Todo extends Component {
   }
 
   render() {
-
-    let todoList = this.props.todos.map((m, i) => {
-      let controlBtn = (m.status === true) ? (<i className="fas fa-trash" onClick={(e)=>{this.removeTask(e, m)}} ></i>): (<i className="fas fa-check" onClick={(e) => {this.completeTask(e, m)}}></i>)
-      return <li key={i} className={m.status ? 'completedTask':''}> {m.data} {controlBtn}</li>
-    })
-
-    let todoBox = (this.state.isLoading !== true)?(<ul>{todoList}</ul>) : (<div className="loader"><i class="fas fa-spinner fa-5x"></i></div>)
-  
     return (
       <DefaultPage>
         <div className="control-wrapper">
@@ -74,7 +61,7 @@ class Todo extends Component {
           <Button type="submit" onClick={(e) => {this.saveTask(e)}} text="add" className="btn-todo"  />
         </div>
           <div className="todo-list">
-            {todoBox}
+            <TodoList />
           </div>
         </div>
       </DefaultPage>
@@ -87,12 +74,7 @@ Todo.prototypes = {
   fetchTodos: PropTypes.func.isRequired,
   completedTask: PropTypes.func.isRequired,
   removeTask: PropTypes.func.isRequired,
-  logOut: PropTypes.func.isRequired,
-  todos: PropTypes.array.isRequired
+  logOut: PropTypes.func.isRequired
 }
 
-const mapStateToProps = state => ({
-  todos: state.todos.todo_list
-})
-
-export default connect(mapStateToProps, {fetchTodos, newTodo, completeTask, removeTask, logout})(Todo);  
+export default connect(null , {fetchTodos, newTodo, completeTask, removeTask, logout})(Todo);  
