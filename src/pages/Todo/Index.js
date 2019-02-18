@@ -24,6 +24,9 @@ class Todo extends Component {
   componentWillMount () {
     this.props.fetchTodos();
   }
+  componentWillUpdate () {
+    this.props.fetchTodos();
+  }
   
   inputHandler = e => {this.setState({task: e.target.value})}
 
