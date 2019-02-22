@@ -9,3 +9,5 @@ export const REMOVE_TASK = 'REMOVE_TASK'
 export const authorized = 'authorized'
 export const unauthorized = 'unauthorized'
 
+export const SHOW_LOGIN = 'SHOW_LOGIN'
+export const HIDE_LOGIN = 'HIDE_LOGIN'
