@@ -61,9 +61,8 @@ export const login = (data) => dispatch => {
   })
 
 }
-export const logout = (history) => dispatch => {
+
+export const logout = () => dispatch => {
   localStorage.clear()
   dispatch({ type: unauthorized })
-  dispatch({ type: logout })
-  history.push('/')
 }
