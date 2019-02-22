@@ -1,4 +1,10 @@
-import { FETCH_TODOS_START, FETCH_TODOS_SUCESS, FETCH_TODOS_FAIL, NEW_TODO, COMPLETE_TASK, REMOVE_TASK } from './../actions/types';
+import { 
+  FETCH_TODOS_START, 
+  FETCH_TODOS_SUCESS, 
+  FETCH_TODOS_FAIL, 
+  NEW_TODO, COMPLETE_TASK, 
+  REMOVE_TASK 
+} from './../actions/types';
 
 const initialState = {
   todo_list: [],
