@@ -1,36 +1,21 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
 import DefaultPage from './../DefaultPage'
 
 import Singup from './Signup'
 import Login from './Login'
-import Span from './../../components/span/Span'
 
 import "./auth.css"
 
 class Auth extends Component {
 
-  constructor () {
-    super();
-    this.state = {
-      isActive: true
-    }
-  }
-
-  activate = () => {
-    this.setState({isActive : !this.state.isActive})
-  }
-
   render () {
-    let form = (this.state.isActive) ? <Login history={this.props.history} /> : <Singup history={this.props.history}/>
-    
-    let nav = (this.state.isActive) ? "signup" : "login"
 
+    let form = (this.props.isShowedLogin) ? <Login history={this.props.history} /> : <Singup history={this.props.history}/>
+    
     return (
       <DefaultPage>
-        <div className="control-wrapper">
-          <Span onClick={this.activate} className="span-pr hover" text={nav} />
-        </div>
         <div className="auth-form-content">
           {form}
         </div>
@@ -39,4 +24,10 @@ class Auth extends Component {
   }
 }
 
-export default Auth;
+const mapStateToProps = (state) => {
+  return { 
+    isShowedLogin: state.nav.isShowedLogin
+  }
+}
+
+export default connect(mapStateToProps)(Auth);
