@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Nav from '../components/nav/Nav'
 import "./default.css"
 
 class DefaultPage extends Component {
@@ -8,6 +9,7 @@ class DefaultPage extends Component {
       <div className="page-container">
         <div className="page-box">
           <div className="page-content">
+            <Nav />
             {this.props.children}
           </div>
           <div className="page-image">
