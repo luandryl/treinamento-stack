@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { newTodo } from '../../store/actions/todoAction'
-import { logout } from '../../store/actions/authAction'
 
 import DefaultPage from './../DefaultPage'
 
-import Span from './../../components/span/Span'
 import Input from '../../components/inputs/Input'
 import Button from '../../components/button/Button'
 
@@ -34,16 +32,9 @@ class Todo extends Component {
     this.setState({task: ''})
   }
 
-  logout = () => {
-    this.props.logout(this.props.history)
-  }
-
   render() {
     return (
       <DefaultPage>
-        <div className="control-wrapper">
-          <Span onClick={this.logout} className="span-pr" text="logout" />
-        </div>
         <div className="todo-wrapper">
         <div className="todo-ctrl">
           <Input className="input-todo" type="text" value={this.state.task} onChange={this.inputHandler} placeholder="Homework..."/>
@@ -59,9 +50,7 @@ class Todo extends Component {
 }
 
 Todo.prototypes = {
-  newTodo: PropTypes.func.isRequired,
-  fetchTodos: PropTypes.func.isRequired,
-  logOut: PropTypes.func.isRequired
+  newTodo: PropTypes.func.isRequired
 }
 
-export default connect(null , {newTodo, logout})(Todo);  
+export default connect(null , {newTodo})(Todo);  
